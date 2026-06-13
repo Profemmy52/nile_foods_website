@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nile Foods — Fast Food Delivery in Kigali</title>
+  <meta name="description" content="Hot, fresh fast food delivered to your door in Kigali. Order on WhatsApp — burgers, wraps, chicken & chips. Open 10am–10pm daily." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Nile Foods" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        
+        <!-- Auth Area -->
+        <span id="navUserArea" class="nav-user-area">
+          <a href="#" class="nav-auth-btn" id="navAuthBtn" onclick="openAuthModal(event)">Sign In</a>
+          <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+            <button class="profile-dropdown-btn" onclick="toggleProfileMenu(event)">
+              <span class="user-icon">👤</span> <span id="navUserName">My Account</span>
+            </button>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <a href="#" onclick="openProfileModal(event, 'profile')">My Profile</a>
+              <a href="#" onclick="openProfileModal(event, 'history')">Order History</a>
+              <hr class="dropdown-divider" />
+              <a href="#" onclick="handleLogout(event)">Log Out</a>
+            </div>
+          </div>
+        </span>
+
+        <a href="#order" class="nav-cta">Order Now</a>
+      </nav>
+      <button class="hamburger" aria-label="Open menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#menu" onclick="closeMobile()">Menu</a>
+      <a href="#about" onclick="closeMobile()">About</a>
+      <a href="#contact" onclick="closeMobile()">Contact</a>
+      <hr class="mobile-menu-divider" />
+      <div id="mobileUserArea" class="mobile-user-area">
+        <a href="#" onclick="openAuthModal(event); closeMobile();" class="mobile-auth-link">Sign In</a>
+      </div>
+      <div id="mobileProfileArea" class="mobile-profile-area" style="display:none;">
+        <a href="#" onclick="openProfileModal(event, 'profile'); closeMobile();">My Profile</a>
+        <a href="#" onclick="openProfileModal(event, 'history'); closeMobile();">Order History</a>
+        <a href="#" onclick="handleLogout(event); closeMobile();" class="logout-link">Log Out</a>
+      </div>
+      <hr class="mobile-menu-divider" />
+      <a href="#order" class="nav-cta" onclick="closeMobile()">Order Now</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔴 Open Now · 10am – 10pm</div>
+      <h1 class="hero-title">Kigali's Favourite<br /><span class="hero-accent">Fast Food</span><br />Delivered Hot.</h1>
+      <p class="hero-sub">Burgers, wraps & crispy chicken — straight from our kitchen in Gikondo to your door. Order on WhatsApp in seconds.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">Browse Menu</a>
+        <a href="https://wa.me/250785177046" class="btn-ghost" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.525 5.847L.057 23.488c-.083.334.23.647.563.563l5.64-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.003-1.37l-.36-.214-3.716.967.99-3.617-.235-.372A9.808 9.808 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span>🚗 Free delivery in Kigali</span>
+        <span>⏱ Fast service</span>
+        <span>📞 Call or WhatsApp</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <img src="images/hero-food.jpg" alt="Nile Foods delicious burgers and chicken" class="hero-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <div class="hero-img-placeholder">
+          <span>🍔</span>
+          <p>Your logo / food photo here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY NOTICE -->
+  <div class="delivery-banner">
+    <div class="container">
+      <p>🚗 <strong>Free delivery</strong> across Kigali &nbsp;|&nbsp; Areas like Kabuga, Masaka, Karuruma & other distant zones: <strong>+1,000 RWF extra delivery fee</strong> &nbsp;|&nbsp; Call <a href="tel:+250785177046">0785 177 046</a> to confirm your zone</p>
+    </div>
+  </div>
+
+  <!-- MENU SECTION -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">What we serve</span>
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-sub">Everything made fresh. Add to cart and we'll send your order straight to WhatsApp.</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="cat-tabs">
+        <button class="cat-tab active" data-cat="all">All</button>
+        <button class="cat-tab" data-cat="chicken">Chicken</button>
+        <button class="cat-tab" data-cat="burgers">Burgers & Wraps</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- CHICKEN -->
+        <div class="menu-card" data-cat="chicken">
+          <div class="menu-img-wrap">
+            <img src="images/4pc-chicken.jpg" alt="4 Pieces Chicken & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍗</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>4 Pcs Chicken & Chips</h3>
+            <p class="menu-desc">4 crispy fried chicken pieces served with a generous portion of chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">9,500 RWF</span>
+              <button class="add-btn" onclick="addToCart('4 Pcs Chicken & Chips', 9500)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="chicken">
+          <div class="menu-img-wrap">
+            <img src="images/6pc-chicken.jpg" alt="6 Pieces Chicken & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍗</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>6 Pcs Chicken & Chips</h3>
+            <p class="menu-desc">6 crispy fried chicken pieces served with chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">12,500 RWF</span>
+              <button class="add-btn" onclick="addToCart('6 Pcs Chicken & Chips', 12500)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="chicken">
+          <div class="menu-img-wrap">
+            <img src="images/8pc-chicken.jpg" alt="8 Pieces Chicken & 2 Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍗</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>8 Pcs Chicken & 2 Chips</h3>
+            <p class="menu-desc">8 crispy fried chicken pieces served with 2 portions of chips. Perfect for sharing.</p>
+            <div class="menu-footer">
+              <span class="menu-price">16,500 RWF</span>
+              <button class="add-btn" onclick="addToCart('8 Pcs Chicken & 2 Chips', 16500)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="chicken">
+          <div class="menu-img-wrap">
+            <img src="images/12pc-chicken.jpg" alt="12 Pieces Chicken & 3 Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍗</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>12 Pcs Chicken & 3 Chips</h3>
+            <p class="menu-desc">12 crispy fried chicken pieces with 3 chips. Great for group orders.</p>
+            <div class="menu-footer">
+              <span class="menu-price">22,000 RWF</span>
+              <button class="add-btn" onclick="addToCart('12 Pcs Chicken & 3 Chips', 22000)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="chicken">
+          <div class="menu-img-wrap">
+            <img src="images/full-chicken.jpg" alt="Full Chicken & 2 Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍗</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>Full Chicken & 2 Chips</h3>
+            <p class="menu-desc">A whole crispy fried chicken served with 2 generous portions of chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">25,000 RWF</span>
+              <button class="add-btn" onclick="addToCart('Full Chicken & 2 Chips', 25000)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BURGERS & WRAPS -->
+        <div class="menu-card" data-cat="burgers">
+          <div class="menu-img-wrap">
+            <img src="images/beef-burger.jpg" alt="Beef Burger & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍔</span></div>
+          </div>
+          <div class="menu-info">
+            <div class="menu-badge">Most Popular</div>
+            <h3>Beef Burger & Chips</h3>
+            <p class="menu-desc">Juicy beef patty in a fresh bun with chips on the side.</p>
+            <div class="menu-footer">
+              <span class="menu-price">6,500 RWF</span>
+              <button class="add-btn" onclick="addToCart('Beef Burger & Chips', 6500)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="burgers">
+          <div class="menu-img-wrap">
+            <img src="images/chicken-burger.jpg" alt="Chicken Burger & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍔</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>Chicken Burger & Chips</h3>
+            <p class="menu-desc">Crispy chicken fillet burger served with chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">7,000 RWF</span>
+              <button class="add-btn" onclick="addToCart('Chicken Burger & Chips', 7000)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="burgers">
+          <div class="menu-img-wrap">
+            <img src="images/double-burger.jpg" alt="Double Beef Burger & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🍔</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>Double Beef Burger & Chips</h3>
+            <p class="menu-desc">Double beef patty stack for the serious burger lover, with chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">8,000 RWF</span>
+              <button class="add-btn" onclick="addToCart('Double Beef Burger & Chips', 8000)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="burgers">
+          <div class="menu-img-wrap">
+            <img src="images/wrap.jpg" alt="Wrap & Chips" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+            <div class="menu-img-placeholder"><span>🌯</span></div>
+          </div>
+          <div class="menu-info">
+            <h3>Wrap & Chips</h3>
+            <p class="menu-desc">Freshly made wrap packed with flavour, served with chips.</p>
+            <div class="menu-footer">
+              <span class="menu-price">7,000 RWF</span>
+              <button class="add-btn" onclick="addToCart('Wrap & Chips', 7000)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /menu-grid -->
+    </div>
+  </section>
+
+  <!-- CART / ORDER SECTION -->
+  <section class="section section-dark" id="order">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Review & send</span>
+        <h2 class="section-title">Your Order</h2>
+      </div>
+
+      <div class="order-layout">
+        <!-- Cart -->
+        <div class="cart-box" id="cartBox">
+          <div class="cart-empty" id="cartEmpty">
+            <span>🛒</span>
+            <p>Your cart is empty.<br />Add items from the menu above.</p>
+          </div>
+          <div id="cartItems"></div>
+          <div class="cart-total" id="cartTotal" style="display:none">
+            <span>Total</span>
+            <span id="totalAmount">0 RWF</span>
+          </div>
+        </div>
+
+        <!-- Customer details -->
+        <div class="order-form" id="orderForm">
+          <div class="order-form-header">
+            <h3>Delivery Details</h3>
+            <div class="checkout-auth-promo" id="checkoutAuthPromo">
+              🔑 <a href="#" onclick="openAuthModal(event)">Log in</a> to auto-fill details.
+            </div>
+            <div class="checkout-auth-welcome" id="checkoutAuthWelcome" style="display: none;">
+              ✨ Logged in! Loaded your saved details.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="custName">Your Name *</label>
+            <input type="text" id="custName" placeholder="e.g. Jean Pierre" />
+          </div>
+          <div class="form-group">
+            <label for="custPhone">Phone Number *</label>
+            <input type="tel" id="custPhone" placeholder="e.g. 0788 123 456" />
+          </div>
+          <div class="form-group">
+            <label for="custAddress">Delivery Address / Location *</label>
+            <input type="text" id="custAddress" placeholder="e.g. Gikondo, near Petro Kigali station" />
+          </div>
+          <div class="form-group">
+            <label for="custNotes">Special Instructions (optional)</label>
+            <textarea id="custNotes" rows="2" placeholder="e.g. extra sauce, no onions..."></textarea>
+          </div>
+          <div class="delivery-note">
+            ⚠️ If you're in Kabuga, Masaka, Karuruma, Norvege, Zindiro, Bumbogo, Rugende, Giticyinyoni or similarly distant areas, an extra <strong>1,000 RWF</strong> delivery fee applies.
+          </div>
+          <button class="btn-primary btn-full" id="sendOrderBtn" onclick="sendOrder()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.525 5.847L.057 23.488c-.083.334.23.647.563.563l5.64-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.003-1.37l-.36-.214-3.716.967.99-3.617-.235-.372A9.808 9.808 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+            Send Order on WhatsApp
+          </button>
+          <p class="form-disclaimer">You'll be redirected to WhatsApp to confirm your order with us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-text">
+          <span class="section-eyebrow">Our story</span>
+          <h2 class="section-title">Built in Kigali.<br />Made for Kigali.</h2>
+          <p>Nile Foods started with a simple idea — Kigali deserves fast food that's actually fast, actually fresh, and delivered without the hassle. We cook everything in our kitchen in Gikondo and deliver directly to you.</p>
+          <p>No middleman. No reheating. Just good food, fast.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">2023</span>
+              <span class="stat-label">Founded</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">10am–10pm</span>
+              <span class="stat-label">Every day</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">Free</span>
+              <span class="stat-label">Delivery (most zones)</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-img-wrap">
+          <img src="images/kitchen.jpg" alt="Nile Foods kitchen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <div class="about-img-placeholder"><span>📸</span><p>Kitchen photo here</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-red" id="contact">
+    <div class="container">
+      <div class="section-header section-header-light">
+        <span class="section-eyebrow eyebrow-light">Get in touch</span>
+        <h2 class="section-title title-light">Order or Ask Us Anything</h2>
+        <p class="section-sub sub-light">We're available every day from 10am to 10pm. Reach us on WhatsApp or call — whichever is easier for you.</p>
+      </div>
+      <div class="contact-cards">
+        <a href="https://wa.me/250785177046" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.525 5.847L.057 23.488c-.083.334.23.647.563.563l5.64-1.468A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.003-1.37l-.36-.214-3.716.967.99-3.617-.235-.372A9.808 9.808 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/></svg>
+          </div>
+          <div>
+            <h4>WhatsApp</h4>
+            <p>0785 177 046</p>
+          </div>
+        </a>
+        <a href="tel:+250785177046" class="contact-card">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Call Us</h4>
+            <p>0785 177 046</p>
+          </div>
+        </a>
+        <a href="tel:+250735564002" class="contact-card">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Alternative Line</h4>
+            <p>0735 564 002</p>
+          </div>
+        </a>
+        <div class="contact-card contact-card-static">
+          <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Gikondo, Kigali</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <img src="images/logo.png" alt="Nile Foods" class="footer-logo" />
+        <p>© 2024 Nile Foods. Gikondo, Kigali, Rwanda.</p>
+        <p>Open daily: 10am – 10pm</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-backdrop" id="authModal" style="display: none;" onclick="closeModalOnBackdrop(event, 'authModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Log In</button>
+        <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" onsubmit="submitLogin(event)">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" required placeholder="e.g. name@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-primary btn-full">Log In</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="auth-form" style="display: none;" onsubmit="submitSignup(event)">
+        <div class="form-group">
+          <label for="signupName">Full Name *</label>
+          <input type="text" id="signupName" required placeholder="e.g. Jean Pierre" />
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email Address *</label>
+          <input type="email" id="signupEmail" required placeholder="e.g. name@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="signupPhone">Phone Number *</label>
+          <input type="tel" id="signupPhone" required placeholder="e.g. 0788 123 456" />
+        </div>
+        <div class="form-group">
+          <label for="signupAddress">Delivery Address / Location *</label>
+          <input type="text" id="signupAddress" required placeholder="e.g. Gikondo, near Petro Kigali" />
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password *</label>
+          <input type="password" id="signupPassword" required minlength="6" placeholder="Min. 6 characters" />
+        </div>
+        <button type="submit" class="btn-primary btn-full">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PROFILE / HISTORY MODAL -->
+  <div class="modal-backdrop" id="profileModal" style="display: none;" onclick="closeModalOnBackdrop(event, 'profileModal')">
+    <div class="modal-content modal-content-wide">
+      <button class="modal-close" onclick="closeProfileModal()">&times;</button>
+      
+      <div class="profile-layout-container">
+        <!-- Sidebar Tabs -->
+        <div class="profile-sidebar">
+          <button class="profile-side-tab active" id="sideTabProfile" onclick="switchProfileTab('profile')">👤 My Profile</button>
+          <button class="profile-side-tab" id="sideTabHistory" onclick="switchProfileTab('history')">📜 Order History</button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="profile-main">
+          <!-- Profile View/Edit -->
+          <div id="profileViewTab" class="profile-tab-content">
+            <h3>My Profile Details</h3>
+            <form id="profileEditForm" onsubmit="saveProfileDetails(event)">
+              <div class="form-group">
+                <label for="profileName">Full Name</label>
+                <input type="text" id="profileName" required />
+              </div>
+              <div class="form-group">
+                <label for="profileEmail">Email (Cannot be changed)</label>
+                <input type="email" id="profileEmail" disabled />
+              </div>
+              <div class="form-group">
+                <label for="profilePhone">Phone Number *</label>
+                <input type="tel" id="profilePhone" required />
+              </div>
+              <div class="form-group">
+                <label for="profileAddress">Default Delivery Address *</label>
+                <input type="text" id="profileAddress" required />
+              </div>
+              <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+          </div>
+          
+          <!-- Order History -->
+          <div id="profileHistoryTab" class="profile-tab-content" style="display: none;">
+            <h3>Your Order History</h3>
+            <div id="orderHistoryList">
+              <p class="text-muted">No orders found.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- FLOATING CART BUTTON -->
+  <button class="float-cart" id="floatCart" onclick="scrollToOrder()" style="display:none">
+    🛒 <span id="floatCount">0</span> item(s) — <span id="floatTotal">0</span> RWF
+  </button>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
